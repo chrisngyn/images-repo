@@ -13,7 +13,7 @@ export default class App extends React.Component {
         
         const response = await Axios.get("https://api.unsplash.com/search/photos", {
             params: { query: search },
-            headers: { Authorization: "Client-ID MK0UkR_pgHixKaaq7pXfsuGKIJxIA0XSzzsvKTL03MI"}
+            headers: { Authorization: REACT_APP_API_KEY}
         });
 
         console.log(response.data.results)
