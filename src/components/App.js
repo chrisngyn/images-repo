@@ -10,10 +10,10 @@ export default class App extends React.Component {
 
     onSearchSubmit = async (search) => {
         console.log("User is searching for: " + search);
-
+        
         const response = await Axios.get("https://api.unsplash.com/search/photos", {
             params: { query: search },
-            headers: { Authorization: "Client-ID " }
+            headers: { Authorization: process.env.REACT_APP_Client_ID }
         });
 
         console.log(response.data.results)

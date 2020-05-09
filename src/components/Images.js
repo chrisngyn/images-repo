@@ -6,7 +6,7 @@ const Images = (props) => {
     });
 
     return(
-        <div>
+        <div className="image-list">
             {pictures}
         </div>
     );
