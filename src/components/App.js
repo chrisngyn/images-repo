@@ -1,17 +1,19 @@
 import React from 'react';
 import Search from './SearchBar';
 import ImageList from './Images';
-import Unsplash from './Unsplash';
+import Axios from 'axios';
 
 export default class App extends React.Component {
     state = {
         images: []
     }
 
-    onSearchSubmit = async (query) => {
-        console.log("User is searching for: " + query);
-        const response = await Unsplash.get("/search/photos", {
-            params: { query: query }
+    onSearchSubmit = async (search) => {
+        console.log("User is searching for: " + search);
+
+        const response = await Axios.get("https://api.unsplash.com/search/photos", {
+            params: { query: search },
+            headers: { Authorization: "Client-ID " }
         });
 
         console.log(response.data.results)
@@ -24,7 +26,7 @@ export default class App extends React.Component {
     render() {
         return(
             <div className="ui container" style={{ marginTop: '25px' }}>
-                <Search userEntersQuery={this.onSearchSubmit} /* passing a FUNCTION as PROP to be called */ />
+                <Search userEntersQuery={this.onSearchSubmit}/>
                 <ImageList images={this.state.images}/>
             </div>
         );

@@ -7,6 +7,7 @@ export default class Search extends React.Component {
 
     getUserInput = (event) => {
         console.log(event.target.value);
+
         this.setState({
             userInput: event.target.value
         })
@@ -14,7 +15,7 @@ export default class Search extends React.Component {
 
     enterQuery = (event) => {
         event.preventDefault();
-        this.props.userEntersQuery(this.state.userInput);
+        this.props.userEntersQuery(this.state.userInput); // to pass info from child to parent, we'll use a function we passed as a prop
     }
 
     render() {
